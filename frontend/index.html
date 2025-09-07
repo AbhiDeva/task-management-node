@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css"/>
+    <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Optional: Customize Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: '#1E40AF',
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body>
+  <div class="app-container">
+    <h1>📝 Task Manager</h1>
+
+    <!-- Task Form -->
+    <div id="task-form">
+      <input type="text" id="title" placeholder="Task title"/>
+      <textarea id="description" placeholder="Task description"></textarea>
+      <select id="priority">
+        <option value="Low">Low Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="High">High Priority</option>
+      </select>
+      <input type="date" id="dueDate"/>
+   <div class="flex justify-center">
+  <button onclick="addTask()" 
+    class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow">
+    ➕ Add Task
+  </button>
+</div>
+
+<!-- Notification Area (below button) -->
+<div id="notification-container" class="mt-3 text-center"></div>
+    </div>
+
+    <!-- Task List -->
+    <div id="task-list"></div>
+  </div>
+
+
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+/* body { font-family: Arial; margin: 20px; background:#f0f0f0; }
+#task-form input, #task-form textarea, #task-form select { display:block; margin:5px 0; padding:8px; width:100%; }
+button { padding:6px 12px; margin:2px; }
+.task { background:white; margin:5px 0; padding:10px; border-radius:5px; display:flex; justify-content:space-between; align-items:center; }
+.completed { text-decoration:line-through; color:gray; } */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* App Container */
+.app-container {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.app-container h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Task Form */
+#task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#task-form input,
+#task-form textarea,
+#task-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#task-form button {
+  background: #66a6ff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#task-form button:hover {
+  background: #558de8;
+}
+
+/* Task List */
+#task-list {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.task {
+  background: #f9f9f9;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 6px solid #66a6ff;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.8;
+  border-left-color: #aaa;
+}
+
+.task button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.task button:hover {
+  color: #ff4444;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+@keyframes charge {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.battery-bar {
+  transform-origin: left;
+  animation: charge 0.6s ease-out forwards;
+}
+.battery {
+    position: relative;
+    width: 60px;
+    height: 25px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .battery::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: -8px;
+    width: 6px;
+    height: 12px;
+    background: #333;
+    border-radius: 2px;
+  }
+
+  .battery-fill {
+    height: 100%;
+    transition: width 1s ease-in-out;
+  }
+
+  .battery-low {
+    width: 33%;
+    background-color: red;
+  }
+
+  .battery-medium {
+    width: 66%;
+    background-color: yellow;
+  }
+
+  .battery-high {
+    width: 100%;
+    background-color: green;
+  }
+@keyframes charging {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.battery-fill {
+  animation: charging 1.5s ease-in-out;
+}
+
+.battery {
+  position: relative;
+  width: 60px;
+  height: 25px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: -8px;
+  width: 6px;
+  height: 12px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.battery-fill {
+  height: 100%;
+  transition: width 0.6s ease-in-out;
+}
+
+.battery-low {
+  width: 30%;
+  background-color: red;
+}
+
+.battery-medium {
+  width: 65%;
+  background-color: yellow;
+}
+
+.battery-high {
+  width: 100%;
+  background-color: green;
+}
