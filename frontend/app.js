@@ -299,7 +299,7 @@ function getBatteryBars(priority) {
     priority = priority.toLowerCase();
 
     // Base container: horizontal flex
-    let bars = `<div class="flex space-x-1 items-center">`;
+     let bars = "<div class=\"flex space-x-1 items-center\">";;
 
     if (priority === "low") {
         bars += `
@@ -322,7 +322,7 @@ function getBatteryBars(priority) {
     `;
     }
 
-    bars += `</div>`;
+    bars += "</div>";
     return bars;
 }
 
