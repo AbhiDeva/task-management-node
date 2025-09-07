@@ -15,18 +15,18 @@ jobs:
           node-version: '14'
 
       - name: Install backend dependencies
-        working-directory: ./
+        working-directory: ./backend
         run: npm install
 
       - name: Run backend linter
-        working-directory: ./
+        working-directory: ./backend
         run: npm run lint
 
       # - name: Run backend tests
       #   working-directory: ./backend
       #   run: npm test
 
-  # frontend:
+   frontend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
