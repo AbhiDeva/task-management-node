@@ -15,36 +15,13 @@ jobs:
           node-version: '14'
 
       - name: Install backend dependencies
-        working-directory: ./backend
+        working-directory: ./
         run: npm install
 
       - name: Run backend linter
-        working-directory: ./backend
+        working-directory: ./
         run: npm run lint
 
-      # - name: Run backend tests
-      #   working-directory: ./backend
-      #   run: npm test
 
-   frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install frontend dependencies
-        working-directory: ./frontend
-        run: npm install
-
-      - name: Run frontend linter
-        working-directory: ./frontend
-        run: npm run lint
-
-      # - name: Run frontend tests
-      #   working-directory: ./frontend
-      #   run: npm test
+  
