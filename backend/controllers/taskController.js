@@ -6,23 +6,47 @@ exports.getTasks = async (req,res) => {
 };
 
  exports.createTask = async (req, res) => {
-  try {
+  // try {
+  //   const { title, description, priority, dueDate } = req.body;
+
+  //   if (!title) {
+  //     return res.status(400).json({ message: "Title is required" });
+  //   }
+
+  //   //  Check duplicate by title (case-insensitive)
+  //   const existingTask = await Task.findOne({ title: new RegExp(`^${title}$`, "i") });
+  //   if (existingTask) {
+  //     return res.status(400).json({ message: "Task with this title already exists" });
+  //   }
+
+  //   const task = await Task.create({ title, description, priority, dueDate });
+  //   res.status(201).json(task);
+  // } catch (err) {
+  //   console.error(err);
+  //   res.status(500).json({ message: "Server error" });
+  // }
+   try {
     const { title, description, priority, dueDate } = req.body;
 
-    if (!title) {
-      return res.status(400).json({ message: "Title is required" });
-    }
+    // Check for duplicate title
+    const existing = await Task.findOne({ title: title.trim() });
+    if (existing) return res.status(400).json({ message: "Task with this title already exists!" });
 
-    //  Check duplicate by title (case-insensitive)
-    const existingTask = await Task.findOne({ title: new RegExp(`^${title}$`, "i") });
-    if (existingTask) {
-      return res.status(400).json({ message: "Task with this title already exists" });
-    }
+    const task = new Task({
+      title: title.trim(),
+      description: description ? description.trim() : "",
+      priority: priority || "High", // default high
+      dueDate: dueDate ? new Date(dueDate) : undefined,
+    });
 
-    const task = await Task.create({ title, description, priority, dueDate });
+    await task.save();
     res.status(201).json(task);
   } catch (err) {
     console.error(err);
+    if (err.name === "ValidationError") {
+      const messages = Object.values(err.errors).map((e) => e.message);
+      return res.status(400).json({ message: messages.join(", ") });
+    }
     res.status(500).json({ message: "Server error" });
   }
 };
