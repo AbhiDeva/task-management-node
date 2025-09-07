@@ -217,12 +217,12 @@ function renderTasks(tasks) {
         ${task.title}
       </td>
       <td class="px-4 py-3 text-gray-600 border border-gray-300 max-w-xs truncate relative group">
-  <span class="truncate block" title="${task.description || ''}">
-    ${task.description || ''}
+  <span class="truncate block" title="${task.description}">
+    ${task.description || ""}
   </span>
 
   <div class="absolute left-0 -top-10 bg-gray-700 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-normal z-10">
-    ${task.description || ''}
+    ${task.description || ""}
     <div class="w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-gray-700 absolute bottom-[-4px] left-2"></div>
   </div>
 </td>
